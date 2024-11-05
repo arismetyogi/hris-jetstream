@@ -10,9 +10,11 @@ class UserController extends Controller
   /**
    * Display a listing of the resource.
    */
+
   public function index()
   {
-    return view('livewire.user');
+    $users = User::all();
+    return view('pages.user.index', compact('users'));
   }
 
   /**

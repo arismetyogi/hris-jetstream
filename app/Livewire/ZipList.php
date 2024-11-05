@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class Department extends Component
+class ZipList extends Component
 {
     public function render()
     {
-        return view('livewire.department');
+        return view('livewire.zip-list');
     }
 }
