@@ -5,11 +5,16 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Livewire\WithPagination;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -20,6 +25,7 @@ class User extends Authenticatable
   use Notifiable;
   use TwoFactorAuthenticatable;
   use HasRoles;
+  use WithPagination;
 
   /**
    * The attributes that are mass assignable.
@@ -27,9 +33,11 @@ class User extends Authenticatable
    * @var array<int, string>
    */
   protected $fillable = [
-    'name',
+    'first_name',
+    'last_name',
     'email',
     'password',
+    'department_id'
   ];
 
   /**
@@ -62,8 +70,17 @@ class User extends Authenticatable
     'profile_photo_url',
   ];
 
-  public function users(): BelongsTo
+  public function department(): BelongsTo
   {
     return $this->belongsTo(Department::class);
+  }
+
+  public function role(): HasOne
+  {
+    return $this->hasOne(Role::class);
+  }
+  public function permissions(): HasMany
+  {
+    return $this->hasMany(Permission::class);
   }
 }
