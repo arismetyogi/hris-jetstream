@@ -1,66 +1,68 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon-32x32.png" type="image/png">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Styles -->
-        @livewireStyles        
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" rel="stylesheet" />
 
-        <script>
-            if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
-                document.querySelector('html').classList.remove('dark');
-                document.querySelector('html').style.colorScheme = 'light';
-            } else {
-                document.querySelector('html').classList.add('dark');
-                document.querySelector('html').style.colorScheme = 'dark';
-            }
-        </script>
-    </head>
-    <body
-        class="font-inter antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400"
-        :class="{ 'sidebar-expanded': sidebarExpanded }"
-        x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }"
-        x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))"    
-    >
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <script>
-            if (localStorage.getItem('sidebar-expanded') == 'true') {
-                document.querySelector('body').classList.add('sidebar-expanded');
-            } else {
-                document.querySelector('body').classList.remove('sidebar-expanded');
-            }
-        </script>
+    <!-- Styles -->
+    @livewireStyles
 
-        <!-- Page wrapper -->
-        <div class="flex h-[100dvh] overflow-hidden">
+    <script>
+        if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
+            document.querySelector('html').classList.remove('dark');
+            document.querySelector('html').style.colorScheme = 'light';
+        } else {
+            document.querySelector('html').classList.add('dark');
+            document.querySelector('html').style.colorScheme = 'dark';
+        }
+    </script>
+</head>
 
-            <x-app.sidebar :variant="$attributes['sidebarVariant']" />
+<body class="font-inter antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400"
+    :class="{ 'sidebar-expanded': sidebarExpanded }" x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }" x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))">
 
-            <!-- Content area -->
-            <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden @if($attributes['background']){{ $attributes['background'] }}@endif" x-ref="contentarea">
+    <script>
+        if (localStorage.getItem('sidebar-expanded') == 'true') {
+            document.querySelector('body').classList.add('sidebar-expanded');
+        } else {
+            document.querySelector('body').classList.remove('sidebar-expanded');
+        }
+    </script>
 
-                <x-app.header :variant="$attributes['headerVariant']" />
+    <!-- Page wrapper -->
+    <div class="flex h-[100dvh] overflow-hidden">
 
-                <main class="grow">
-                    {{ $slot }}
-                </main>
+        <x-app.sidebar :variant="$attributes['sidebarVariant']" />
 
-            </div>
+        <!-- Content area -->
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden @if ($attributes['background']) {{ $attributes['background'] }} @endif"
+            x-ref="contentarea">
+
+            <x-app.header :variant="$attributes['headerVariant']" />
+
+            <main class="grow">
+                {{ $slot }}
+            </main>
 
         </div>
 
-        @livewireScriptConfig
-    </body>
+    </div>
+
+    @livewireScriptConfig
+</body>
+
 </html>
