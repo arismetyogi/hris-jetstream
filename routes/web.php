@@ -10,6 +10,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -31,6 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
   Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
 
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+  Route::get('/department', [DepartmentController::class, 'index'])->name('department');
 
   Route::get('/users', [UserController::class, 'index'])->name('users');
 
