@@ -11,10 +11,10 @@ return new class extends Migration
    */
   public function up(): void
   {
-    if (! Schema::hasTable('areas')) {
-      Schema::create('departments', function (Blueprint $table) {
+    if (! Schema::hasTable('recruitments')) {
+      Schema::create('recruitments', function (Blueprint $table) {
         $table->id();
-        $table->string('name');
+        $table->name('name');
         $table->timestamps();
       });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('departments');
+    Schema::dropIfExists('recruitments');
   }
 };
