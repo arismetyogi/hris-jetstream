@@ -10,7 +10,7 @@ class EmployeeList extends Component
 {
   use WithPagination;
   public $perPage = 10;
-  public $sortBy = 'employee.updated_at';
+  public $sortBy = 'employees.updated_at';
   public $sortDir = 'DESC';
   public $search = '';
   public function updatedSearch()

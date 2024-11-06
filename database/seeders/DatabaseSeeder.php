@@ -18,8 +18,21 @@ class DatabaseSeeder extends Seeder
     $this->call([
       DashboardTableSeeder::class,
       RolePermissionSeeder::class,
+
       ProvinceSeeder::class,
       ZipSeeder::class,
+
+      AreaSeeder::class,
+      BandSeeder::class,
+      BankSeeder::class,
+      DescstatusSeeder::class,
+      EmplevelSeeder::class,
+      EmployeeStatusSeeder::class,
+      GradeeselonSeeder::class,
+      RecruitmentSeeder::class,
+      TitleSeeder::class,
+      SubtitleSeeder::class,
+
       DepartmentSeeder::class,
       StoreSeeder::class,
 

@@ -37,6 +37,9 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
+                                <th scope="col" class="px-4 py-3">
+                                    <span class="sr-only">Actions</span>
+                                </th>
                                 @include('livewire.includes.th-sorts', [
                                     'name' => 'departments.name',
                                     'displayName' => 'unit bisnis',
@@ -62,7 +65,7 @@
                                     'displayName' => 'alamat',
                                 ])
                                 @include('livewire.includes.th-sorts', [
-                                    'name' => 'employees.phone',
+                                    'name' => 'employees.phone_no',
                                     'displayName' => 'no telp.',
                                 ])
                                 @include('livewire.includes.th-no-sort', [
@@ -79,30 +82,30 @@
                                     'name' => 'employees.updated_at',
                                     'displayName' => 'last updated',
                                 ])
-                                <th scope="col" class="px-4 py-3">
-                                    <span class="sr-only">Actions</span>
-                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($employees as $employee)
                                 <tr class="border-b dark:border-gray-700">
+                                    <td class="px-4 py-3 flex items-center justify-end">
+                                        <button class="px-3 py-1 bg-red-500 text-white rounded">X</button>
+                                    </td>
                                     <th scope="row"
                                         class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $employee->department ? $employee->department_id . ' - ' . $employee->department->name : $employee->department_id }}
                                     </th>
-                                    <td class="px-4 py-3">{{ $employee->store_id . ' - ' . $employee->store->name }}
+                                    <td class="px-4 py-3">
+                                        {{ $employee->store->outlet_sap_id . ' - ' . $employee->store->name }}
                                     </td>
-                                    <td class="px-4 py-3">{{ $employee->name }}</td>
-                                    <td class="px-4 py-3">{{ $employee->employee_type }}</td>
-                                    <td class="px-4 py-3">{{ $employee->operational_date }}</td>
-                                    <td class="px-4 py-3 overflow-hidden">{{ $employee->address }}</td>
-                                    <td class="px-4 py-3">{{ $employee->phone }}</td>
-                                    <td class="px-4 py-3">{{ $employee->latitude }}</td>
-                                    <td class="px-4 py-3">{{ $employee->longitude }}</td>
-                                    <td class="px-4 py-3 flex items-center justify-end">
-                                        <button class="px-3 py-1 bg-red-500 text-white rounded">X</button>
-                                    </td>
+                                    <td class="px-4 py-3">{{ $employee->first_name . ' ' . $employee->last_name }}</td>
+                                    <td class="px-4 py-3">{{ $employee->sap_id }}</td>
+                                    <td class="px-4 py-3">{{ $employee->npp }}</td>
+                                    <td class="px-4 py-3">{{ $employee->address }}</td>
+                                    <td class="px-4 py-3">{{ $employee->phone_no }}</td>
+                                    <td class="px-4 py-3">{{ $employee->blood_type }}</td>
+                                    <td class="px-4 py-3">{{ $employee->religion }}</td>
+                                    <td class="px-4 py-3">{{ $employee->created_at }}</td>
+                                    <td class="px-4 py-3">{{ $employee->updated_at }}</td>
                                 </tr>
                             @endforeach
 
