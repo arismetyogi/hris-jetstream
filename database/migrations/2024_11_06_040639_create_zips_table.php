@@ -23,7 +23,7 @@ return new class extends Migration
           ->references('code')
           ->on('provinces');
 
-        $table->integer('postal_code');
+        $table->integer('zipcode');
         $table->timestamps();
       });
     }

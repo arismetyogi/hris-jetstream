@@ -23,7 +23,7 @@ return new class extends Migration
         $table->string('store_type')->nullable();
         $table->date('operational_date')->nullable();
         $table->string('address')->nullable();
-        $table->foreignId('postcode_id')->nullable()->constrained('postcodes');
+        $table->foreignId('zip_id')->nullable()->constrained('zips');
         $table->float('latitude')->nullable();
         $table->float('longitude')->nullable();
         $table->string('phone')->nullable();

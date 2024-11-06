@@ -12,6 +12,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ZipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
   Route::get('/department', [DepartmentController::class, 'index'])->name('department');
+
+  Route::get('/zips', [ZipController::class, 'index'])->name('zips');
 
   Route::get('/users', [UserController::class, 'index'])->name('users');
 

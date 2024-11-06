@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
     $this->call([
       DashboardTableSeeder::class,
       RolePermissionSeeder::class,
-
+      ProvinceSeeder::class,
+      ZipSeeder::class,
       DepartmentSeeder::class,
+      StoreSeeder::class,
 
       UserSeeder::class,
     ]);

@@ -1,3 +1,3 @@
 <x-app-layout>
-    @livewire('user-list')
+    @livewire('zip-list')
 </x-app-layout>

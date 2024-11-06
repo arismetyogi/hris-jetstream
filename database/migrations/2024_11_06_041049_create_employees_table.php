@@ -26,7 +26,7 @@ return new class extends Migration
       $table->string('blood_type', length: 2)->nullable();
       $table->string('religion', length: 10);
       $table->string('address', 200);
-      $table->unsignedBigInteger('postcode_id')->nullable();
+      $table->unsignedBigInteger('zip_id')->nullable();
       $table->string('npwp', length: 16);
       $table->foreignId('employee_status_id')
         ->constrained('employee_statuses');
@@ -40,8 +40,8 @@ return new class extends Migration
         ->constrained('bands')
         ->cascadeOnDelete();
 
-      $table->foreignId('outlet_id')
-        ->constrained('outlets')
+      $table->foreignId('store_id')
+        ->constrained('stores')
         ->cascadeOnDelete();
       $table->string('sap_id')->unique();
       $table->string('npp', length: 10);
