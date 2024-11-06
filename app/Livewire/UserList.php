@@ -18,6 +18,11 @@ class UserList extends Component
   public $sortBy = 'users.updated_at';
   public $sortDir = 'desc';
 
+  // reset to page 1 when searching
+  public function updatedSearch()
+  {
+    $this->resetPage();
+  }
   public function setSortBy($sortByCol)
   {
     // $this->sortDir = 'ASC';

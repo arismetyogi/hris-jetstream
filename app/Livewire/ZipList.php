@@ -15,6 +15,10 @@ class ZipList extends Component
   public $sortBy = 'provinces.name';
   public $sortDir = 'asc';
 
+  public function updatedSearch()
+  {
+    $this->resetPage();
+  }
   public function setSortBy($sortByCol)
   {
     // $this->sortDir = 'ASC';

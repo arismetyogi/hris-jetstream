@@ -21,7 +21,15 @@
                     </div>
                     <div class="flex space-x-3">
                         <div class="flex space-x-3 items-center">
-                            {{--  --}}
+                            {{-- <label class="w-40 text-sm font-medium text-gray-900 dark:text-slate-100">User Type
+                              :</label>
+                          <select wire:model.live="selectedRole"
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                              <option value="">All</option>
+                              <option value="user">User</option>
+                              <option value="admin">Admin</option>
+                              <option value="superadmin">Super Admin</option>
+                          </select> --}}
                         </div>
                     </div>
                 </div>
@@ -30,40 +38,59 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
                                 @include('livewire.includes.th-sorts', [
-                                    'name' => 'id',
-                                    'displayName' => 'kode unit bisnis',
+                                    'name' => 'departments.name',
+                                    'displayName' => 'unit bisnis',
                                 ])
                                 @include('livewire.includes.th-sorts', [
-                                    'name' => 'name',
-                                    'displayName' => 'nama unit bisnis',
+                                    'name' => 'stores.outlet_sap_id',
+                                    'displayName' => 'kode sap',
                                 ])
                                 @include('livewire.includes.th-sorts', [
-                                    'name' => 'created_at',
-                                    'displayName' => 'created',
+                                    'name' => 'stores.name',
+                                    'displayName' => 'Nama Outlet',
                                 ])
                                 @include('livewire.includes.th-sorts', [
-                                    'name' => 'updated_at',
-                                    'displayName' => 'last update',
+                                    'name' => 'stores.store_type',
+                                    'displayName' => 'store type',
                                 ])
-
+                                @include('livewire.includes.th-sorts', [
+                                    'name' => 'stores.operational_date',
+                                    'displayName' => 'tgl operasional',
+                                ])
+                                @include('livewire.includes.th-sorts', [
+                                    'name' => 'stores.address',
+                                    'displayName' => 'alamat',
+                                ])
+                                @include('livewire.includes.th-sorts', [
+                                    'name' => 'stores.phone',
+                                    'displayName' => 'no telp.',
+                                ])
+                                @include('livewire.includes.th-no-sort', [
+                                    'name' => 'latitude',
+                                ])
+                                @include('livewire.includes.th-no-sort', [
+                                    'name' => 'longitude',
+                                ])
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($departments as $department)
+                            @foreach ($stores as $store)
                                 <tr class="border-b dark:border-gray-700">
                                     <th scope="row"
                                         class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $department->id }}</th>
-                                    <td class="px-4 py-3">{{ $department->name }}</td>
-                                    <td class="px-4 py-3">
-                                        {{ $department->created_at ? $department->created_at->diffForHumans() : null }}
-                                    </td>
-                                    <td class="px-4 py-3">
-                                        {{ $department->updated_at ? $department->updated_at->diffForHumans() : null }}
-                                    </td>
+                                        {{ $store->department ? $store->department_id . ' - ' . $store->department->name : $store->department_id }}
+                                    </th>
+                                    <td class="px-4 py-3">{{ $store->outlet_sap_id }}</td>
+                                    <td class="px-4 py-3">{{ $store->name }}</td>
+                                    <td class="px-4 py-3">{{ $store->store_type }}</td>
+                                    <td class="px-4 py-3">{{ $store->operational_date }}</td>
+                                    <td class="px-4 py-3 overflow-hidden">{{ $store->address }}</td>
+                                    <td class="px-4 py-3">{{ $store->phone }}</td>
+                                    <td class="px-4 py-3">{{ $store->latitude }}</td>
+                                    <td class="px-4 py-3">{{ $store->longitude }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
                                         <button class="px-3 py-1 bg-red-500 text-white rounded">X</button>
                                     </td>
@@ -77,17 +104,17 @@
                 <div class="py-4 px-3">
                     <div class="flex ">
                         <div class="flex space-x-4 items-center mb-3">
-                            <label class="w-32 text-sm font-medium text-gray-900">Per Page</label>
+                            <label class="w-32 text-sm font-medium text-gray-900 dark:text-slate-300">Per Page</label>
                             <select wire:model.live='perPage'
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
-                                <option value="20">20</option>
+                                <option value="25">25</option>
                                 <option value="50">50</option>
                                 <option value="100">100</option>
                             </select>
                         </div>
-                        {{ $departments->links() }}
+                        {{ $stores->links() }}
                     </div>
                 </div>
             </div>
