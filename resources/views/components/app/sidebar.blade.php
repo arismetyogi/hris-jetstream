@@ -82,18 +82,18 @@
                             </div>
                         </a>
                         <div class="lg:hidden lg:sidebar-expanded:block 2xl:block">
-                            <ul class="pl-8 mt-1 @if (!in_array(Request::segment(1), ['ecommerce'])) {{ 'hidden' }} @endif"
+                            <ul class="pl-8 mt-1 @if (!in_array(Request::segment(1), ['employees'])) {{ 'hidden' }} @endif"
                                 :class="open ? '!block' : 'hidden'">
                                 <li class="mb-1 last:mb-0">
-                                    <a class="block text-gray-500/90 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition truncate @if (Route::is('logout')) {{ '!text-violet-500' }} @endif"
-                                        href="{{ route('logout') }}">
+                                    <a class="block text-gray-500/90 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition truncate @if (Route::is('employees')) {{ '!text-violet-500' }} @endif"
+                                        href="{{ route('employees') }}">
                                         <span
                                             class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Employees</span>
                                     </a>
                                 </li>
                                 <li class="mb-1 last:mb-0">
-                                    <a class="block text-gray-500/90 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition truncate @if (Route::is('logout')) {{ '!text-violet-500' }} @endif"
-                                        href="{{ route('logout') }}">
+                                    <a class="block text-gray-500/90 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition truncate @if (Route::is('payrolls')) {{ '!text-violet-500' }} @endif"
+                                        href="{{ route('payrolls') }}">
                                         <span
                                             class="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Payrolls</span>
                                     </a>
@@ -403,24 +403,27 @@
                         </div>
                     </li>
                     <li
-                        class="absolute bottom-24 pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['logout'])) {{ 'from-violet-500/[0.12] dark:from-violet-500/[0.24] to-violet-500/[0.04]' }} @endif">
-                        <a class="block text-gray-800 dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['logout'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                            href="{{ route('logout') }}">
-                            <div class="flex items-center">
-                                <svg class="shrink-0 text-gray-400 dark:text-gray-500" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M14 19V5h4a1 1 0 0 1 1 1v11h1a1 1 0 0 1 0 2h-6Z" />
-                                    <path fill-rule="evenodd"
-                                        d="M12 4.571a1 1 0 0 0-1.275-.961l-5 1.428A1 1 0 0 0 5 6v11H4a1 1 0 0 0 0 2h1.86l4.865 1.39A1 1 0 0 0 12 19.43V4.57ZM10 11a1 1 0 0 1 1 1v.5a1 1 0 0 1-2 0V12a1 1 0 0 1 1-1Z"
-                                        clip-rule="evenodd" />
-                                </svg>
+                        class="absolute bottom-24 pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] from-violet-500/[0.12] dark:from-violet-500/[0.24] to-violet-500/[0.04]">
+                        <form method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+                            <a class="block text-gray-800 dark:text-gray-100 truncate transition hover:text-gray-900 dark:hover:text-white"
+                                href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                <div class="flex items-center">
+                                    <svg class="shrink-0 text-gray-400 dark:text-gray-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M14 19V5h4a1 1 0 0 1 1 1v11h1a1 1 0 0 1 0 2h-6Z" />
+                                        <path fill-rule="evenodd"
+                                            d="M12 4.571a1 1 0 0 0-1.275-.961l-5 1.428A1 1 0 0 0 5 6v11H4a1 1 0 0 0 0 2h1.86l4.865 1.39A1 1 0 0 0 12 19.43V4.57ZM10 11a1 1 0 0 1 1 1v.5a1 1 0 0 1-2 0V12a1 1 0 0 1 1-1Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
 
-                                <span
-                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Log
-                                    Out</span>
-                            </div>
-                        </a>
+                                    <span
+                                        class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Log
+                                        Out</span>
+                                </div>
+                            </a>
+                        </form>
                     </li>
                 </ul>
             </div>
