@@ -12,6 +12,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZipController;
@@ -44,7 +45,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
   Route::get('/employees', [EmployeeController::class, 'index'])->name('employees');
 
-  Route::get('/payrolls', [ZipController::class, 'index'])->name('payrolls');
+  Route::get('/payrolls', [PayrollController::class, 'index'])->name('payrolls');
 
   Route::get('/users', [UserController::class, 'index'])->name('users');
 

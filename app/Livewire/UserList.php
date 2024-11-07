@@ -51,7 +51,7 @@ class UserList extends Component
       ->orderBy($this->sortBy, $this->sortDir)
       ->paginate($this->perPage);
 
-    return view('livewire.user-list', [
+    return view('livewire.user-list', data: [
       'users' => $users,
     ]);
   }

@@ -77,19 +77,19 @@
                                         {{ $user->first_name . ' ' . $user->last_name }}</th>
                                     <td class="px-4 py-3">{{ $user->department->name }}</td>
                                     <td class="px-4 py-3">{{ $user->email }}</td>
-                                    <td class="px-4 py-3 text-green-500">
+                                    <td class="px-4 py-3 text-gray-500">
                                         @foreach ($user->getRoleNames() as $role)
                                             @switch($role)
                                                 @case('superadmin')
-                                                    <span>Super Admin</span><br>
+                                                    <span class="text-blue-500">Super Admin</span><br>
                                                 @break
 
                                                 @case('admin')
-                                                    <span>Admin</span><br>
+                                                    <span class="text-green-500">Admin</span><br>
                                                 @break
 
                                                 @default
-                                                    <span>User</span><br>
+                                                    <span class="dark:text-gray-400">User</span><br>
                                             @endswitch
                                         @endforeach
                                     </td>

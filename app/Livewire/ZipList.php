@@ -38,6 +38,7 @@ class ZipList extends Component
           ->orWhere('subdistrict', 'like', '%' . $this->search . '%')
           ->orWhere('city', 'like', '%' . $this->search . '%')
           ->orWhere('zipcode', 'like', '%' . $this->search . '%')
+          ->orWhere('provinces.name_en', 'like', '%' . $this->search . '%')
           ->orWhere('provinces.name', 'like', '%' . $this->search . '%');
       })
       ->orderBy($this->sortBy, $this->sortDir)
