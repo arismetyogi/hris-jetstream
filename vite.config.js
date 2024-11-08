@@ -21,5 +21,14 @@ export default defineConfig({
     include: [
       '@tailwindConfig',
     ]
-  },   
+  },
+  build: {
+    outDir: 'public/build',
+    manifest: true,
+    rollupOptions: {
+        input: {
+            app: 'resources/js/app.js',
+        },
+    },
+},
 });

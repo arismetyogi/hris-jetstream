@@ -68,7 +68,7 @@ class User extends Authenticatable
    * @var array<int, string>
    */
   protected $appends = [
-    'profile_photo_path',
+    'profile_photo_url',
   ];
 
   public function department(): BelongsTo
