@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
       "email" => "suadmin@gmail.com",
       "password" => Hash::make("password"),
       "department_id" => 1,
+      "profile_photo_path" => asset("images/user-36-06.jpg"),
     ]);
     $suadmin->assignRole("superadmin");
 
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
       "email" => "admin@gmail.com",
       "password" => Hash::make("password"),
       "department_id" => 1,
+      "profile_photo_path" => asset("images/user-36-05.jpg"),
     ]);
     $admin->assignRole("admin");
 
@@ -37,7 +39,8 @@ class UserSeeder extends Seeder
       "last_name" => "User",
       "email" => "user@gmail.com",
       "password" => Hash::make(value: "password"),
-      "department_id" => 1,
+      "department_id" => 3112,
+      "profile_photo_path" => asset("images/user-36-07.jpg"),
     ]);
     $user->assignRole("user");
   }

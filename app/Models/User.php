@@ -37,7 +37,8 @@ class User extends Authenticatable
     'last_name',
     'email',
     'password',
-    'department_id'
+    'department_id',
+    'profile_photo_path'
   ];
 
   /**
@@ -67,7 +68,7 @@ class User extends Authenticatable
    * @var array<int, string>
    */
   protected $appends = [
-    'profile_photo_url',
+    'profile_photo_path',
   ];
 
   public function department(): BelongsTo
